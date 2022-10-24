@@ -2,20 +2,21 @@
 
 vec4 GouraudShader::vertex(int iface, int nthvert)
 {
-	//Âş·´Éä¹âÇ¿¶È
+	//æ¼«åå°„å…‰å¼ºåº¦
 	varyingIntensity[nthvert] = std::max(0.f, (float)(model->normal(iface, nthvert)*lightDir));
 
-	//´Ó.objÎÄ¼şÖĞ¶ÁÈ¡¶¥µãÊı¾İ
+	//ä».objæ–‡ä»¶ä¸­è¯»å–é¡¶ç‚¹æ•°æ®
 	vec4 objVertex = embed<4>(model->vert(iface, nthvert));
 
-	//MVP¼ÓÊÓ¿Ú±ä»»½«¶¥µã±ä»»µ½ÆÁÄ»×ø±ê
+	//MVPåŠ è§†å£å˜æ¢å°†é¡¶ç‚¹å˜æ¢åˆ°å±å¹•åæ ‡
 	return Viewport * Projection * ModelView * objVertex;
 }
 
 bool GouraudShader::fragment(const vec3 bar, TGAColor &color)
 {
-	//Îªµ±Ç°ÏñËØ½øĞĞ¹âÕÕ²åÖµ¼ÆËã
+	//ä¸ºå½“å‰åƒç´ è¿›è¡Œå…‰ç…§æ’å€¼è®¡ç®—
 	float intensity = varyingIntensity * bar;
+	
 	color = TGAColor(255 * intensity, 255 * intensity, 255 * intensity);
 	return false;
 }
