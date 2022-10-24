@@ -13,7 +13,8 @@ mvp变换：空间中物体本身在其模型空间中，我们需要在相机�
 高洛德着色：通过光照计算，计算出三角形三个顶点的颜色，然后使用重心坐标对三角形内部的像素进行插值计算颜色。
 ![image](https://github.com/Lxkaaaaaa/software-renderer/blob/picture/Gouraud%E7%9D%80%E8%89%B2.jpg)
 ### 5.Phong着色模型
-Phong着色模型：漫反射光+环境光+镜面光组成像素最后的颜色。环境光为一定值，漫反射光和高光项都由纹理贴图给出，添加不同的权重就会有不同的着色效果。
+Phong着色模型：漫反射光+环境光+镜面光组成像素最后的颜色。环境光为一定值，漫反射光和高光项都由纹理贴图给出，添加不同的权重就会有不同的着色效果。  
+
 ![image](https://github.com/Lxkaaaaaa/software-renderer/blob/picture/Phong%E7%9D%80%E8%89%B2.jpg)
 #### 下面为多个obj模型（人头个眼睛）组合的效果图：
 ![image](https://github.com/Lxkaaaaaa/software-renderer/blob/picture/%E5%A4%9A%E4%B8%AAobj%E5%90%88%E5%B9%B6.jpg)
