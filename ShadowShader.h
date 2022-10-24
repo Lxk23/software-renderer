@@ -19,9 +19,9 @@ struct DepthShader :public IShader
 struct FrameShader : public IShader {
 	mat<4, 4> mvp;   //  Projection*ModelView
 	mat<4, 4> mvpIT; // (Projection*ModelView).invert_transpose()
-	mat<4, 4> mvpShadow; //°ÑµÚ¶ş¸öpassµÄÆÁÄ»×ø±ê×ª»»ÎªµÚÒ»¸öpassµÄÆÁÄ»×ø±ê
-	mat<2, 3> varyingUV;  // Èı½ÇĞÎ¶¥µãµÄuv×ø±ê
-	mat<3, 3> varyingTri; // Èı½ÇĞÎ¶¥µãµÄNDC×ø±ê, written by VS, read by FS
+	mat<4, 4> mvpShadow; //æŠŠç¬¬äºŒä¸ªpassçš„å±å¹•åæ ‡è½¬æ¢ä¸ºç¬¬ä¸€ä¸ªpassçš„å±å¹•åæ ‡
+	mat<2, 3> varyingUV;  // ä¸‰è§’å½¢é¡¶ç‚¹çš„uvåæ ‡
+	mat<3, 3> varyingTri; // ä¸‰è§’å½¢é¡¶ç‚¹çš„NDCåæ ‡, written by VS, read by FS
 
 	int screenWidth;
 	float* shadowBuffer;
@@ -32,6 +32,7 @@ struct FrameShader : public IShader {
 	
 	virtual bool fragment(vec3 bar, TGAColor &color);
 };
+
 
 #endif // !_SHADOWSHADER_H_
 
