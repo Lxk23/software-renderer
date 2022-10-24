@@ -2,9 +2,10 @@
 
 vec4 DepthShader::vertex(int iface, int nthvert)
 {
-	vec4 objVertex = embed<4>(model->vert(iface, nthvert)); // ´Ó.objÎÄ¼şÖĞ¶ÁÈ¡¶¥µãÊı¾İ
-	objVertex = Viewport * Projection * ModelView * objVertex;          // ±ä»»µ½ÆÁÄ»×ø±ê
+	vec4 objVertex = embed<4>(model->vert(iface, nthvert)); // ä».objæ–‡ä»¶ä¸­è¯»å–é¡¶ç‚¹æ•°æ®
+	objVertex = Viewport * Projection * ModelView * objVertex;          // å˜æ¢åˆ°å±å¹•åæ ‡
 	varyingTri.set_col(nthvert, proj<3>(objVertex / objVertex[3]));
+	
 	return objVertex;
 }
 
@@ -25,19 +26,19 @@ vec4 FrameShader::vertex(int iface, int nthvert)
 
 bool FrameShader::fragment(vec3 bar, TGAColor& color)
 {
-	vec4 shadowPoint = mvpShadow * embed<4>(varyingTri*bar); // ÔÚshadow mapÖĞµÄ¶ÔÓ¦µã
+	vec4 shadowPoint = mvpShadow * embed<4>(varyingTri*bar); // åœ¨shadow mapä¸­çš„å¯¹åº”ç‚¹
 	shadowPoint = shadowPoint / shadowPoint[3];
 
-	int idx = int(shadowPoint[0]) + int(shadowPoint[1])*screenWidth; // ÔÚshadow mapÖĞµÄË÷Òı
+	int idx = int(shadowPoint[0]) + int(shadowPoint[1])*screenWidth; // åœ¨shadow mapä¸­çš„ç´¢å¼•
 
 	float shadow = .3 + .7*(shadowBuffer[idx] < shadowPoint[2]);
-	//float shadow = .3 + .7*(shadowbuffer[idx] < sb_p[2] + 43.34); // magic coeff ±ÜÃâ z-fighting
+	//float shadow = .3 + .7*(shadowbuffer[idx] < sb_p[2] + 43.34); // magic coeff é¿å… z-fighting
 
-	vec2 uv = varyingUV * bar;        // Îªµ±Ç°ÏñËØ²åÖµuv×ø±ê
+	vec2 uv = varyingUV * bar;        // ä¸ºå½“å‰åƒç´ æ’å€¼uvåæ ‡
 
 	vec3 normal = proj<3>(mvpIT*embed<4>(model->normal(uv))).normalize();
-	vec3 incidentDir = proj<3>(mvp  *embed<4>(lightDir)).normalize(); // ÈëÉä¹â·½ÏòÏòÁ¿
-	vec3 reflectionDir = (normal*(normal*incidentDir*2.f) - incidentDir).normalize();   // ·´Éä¹â·½ÏòÏòÁ¿
+	vec3 incidentDir = proj<3>(mvp  *embed<4>(lightDir)).normalize(); // å…¥å°„å…‰æ–¹å‘å‘é‡
+	vec3 reflectionDir = (normal*(normal*incidentDir*2.f) - incidentDir).normalize();   // åå°„å…‰æ–¹å‘å‘é‡
 
 	float specular = pow(std::max(reflectionDir.z, 0.), sample2D(model->specular(), uv)[0]);
 	float diffuse = std::max(0., normal*incidentDir);
