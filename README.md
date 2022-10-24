@@ -4,7 +4,7 @@ This is a simple software renderer written in c++ that implements our own graphi
 ### 1.基于布雷森汉姆直线绘制算法绘制最基本图元——三角形
 Bresenham布雷森汉姆直线绘制算法绘制线段，绘制三角形：把三角形分为上下两个部分，从下往上绘制三角形的边，同时找到三角形边上的像素，两个像素之间绘制线段填充三角形内部；
 将三角形图元投影到屏幕上，进行像素的绘制：类似光栅化的方法绘制三角形，找到三角形的方形包围盒，遍历包围盒的内部的全部像素，，判断像素是否在三角形的内部：用叉积的方法。
-![image]()
+![image](https://github.com/Lxkaaaaaa/software-renderer/blob/picture/%E7%BB%98%E5%88%B6%E4%B8%89%E8%A7%92%E5%BD%A2.jpg)
 ### 2.zbuffer深度测试提升光栅化效率
 深度测试：z buffer。在光栅化阶段完成：用zbuffer存储一个像素点(x,y)的深度信息（不同于图形管线）在三角形遍历时，若该像素在是三角形内部时开启深度测试：当该像素深度值大于zbuffer中存储的深度值时，丢弃该像素；当该像素深度值小于zbuffer中存储的深度值时，更新zbuffer深度值。
 ### 3.MVP矩阵变换
