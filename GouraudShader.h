@@ -5,11 +5,12 @@
 
 struct GouraudShader :public IShader
 {
-	vec3 varyingIntensity;  //ÔÚ¶¥µã×ÅÉ«Æ÷ÖĞĞ´Èë£¬ÔÚÆ¬¶Î×ÅÉ«Æ÷ÖĞ¶ÁÈ¡
+	vec3 varyingIntensity;  //åœ¨é¡¶ç‚¹ç€è‰²å™¨ä¸­å†™å…¥ï¼Œåœ¨ç‰‡æ®µç€è‰²å™¨ä¸­è¯»å–
 
 	virtual vec4 vertex(int iface, int nthvert);
 	virtual bool fragment(const vec3 bar, TGAColor &color);
 };
+
 
 #endif // !_GOURAUDSHADER_H_
 
