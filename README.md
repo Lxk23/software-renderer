@@ -14,7 +14,7 @@ mvp变换：空间中物体本身在其模型空间中，我们需要在相机�
 ![image](https://github.com/Lxkaaaaaa/software-renderer/blob/picture/Gouraud%E7%9D%80%E8%89%B2.jpg)
 ### 5.Phong着色模型
 Phong着色模型：漫反射光+环境光+镜面光组成像素最后的颜色。环境光为一定值，漫反射光和高光项都由纹理贴图给出，添加不同的权重就会有不同的着色效果。
-![image]()
+![image](https://github.com/Lxkaaaaaa/software-renderer/blob/picture/Phong%E7%9D%80%E8%89%B2.jpg)
 ### 6. 两个pass渲染实现硬阴影效果
 硬阴影的实现：利用shadow map通过两个pass渲染实现。第一个pass将相机放在光源吗的位置来渲染，会将每个像素的深度记录在shadow map中，在第二个pass时，将相机放在原始位置，对于下渲染得到的像素，如果它在以光源位置为相机位置的深度大于shadow map中存储的深度则添加阴影，否则不需要添加阴影。
 ![image]()
