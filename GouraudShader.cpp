@@ -16,7 +16,6 @@ bool GouraudShader::fragment(const vec3 bar, TGAColor &color)
 {
 	//为当前像素进行光照插值计算
 	float intensity = varyingIntensity * bar;
-	
 	color = TGAColor(255 * intensity, 255 * intensity, 255 * intensity);
 	return false;
 }
